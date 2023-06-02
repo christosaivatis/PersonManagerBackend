@@ -1,9 +1,6 @@
 package none.mydomain.personmanager.backend;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * Das POJO.
@@ -11,13 +8,27 @@ import jakarta.persistence.Id;
  * @author Chris A.
  */
 @Entity
+// Ohne die @Table-Annotation wird einfach der Name der Klasse benutzt.
+//@Table(name = "person")
 public class Person {
 
+    // Die einfachere Art mit GenerationType --> IDENTITY.
+//    @Id
+//    @GeneratedValue (strategy = GenerationType.IDENTITY)
+
+    // Die bessere-effizientere Art mit GenerationType --> SEQUENCE.
+    // (Obwohl hier mit "allocationSize=1" kein wirklicher Vorteil)
+    // (Mit größerem "allocationSize" und das gesammelte Einfügen von Datensätzen aber doch)
+    // Mit "sequenceName" wird der Name der entspr. Hilfstabelle in der Datenbank gesetzt.
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence_generator")
+    @SequenceGenerator(name="my_sequence_generator", sequenceName = "person_sequence", allocationSize=1)
     private int id;
 
+    // Ohne die @Column-Annotation wird einfach der Name der Eigenschaft benutzt.
+//    @Column(name = "title")
     private String title;
+
     private String firstName;
     private String lastName;
     private String dateOfBirth;
@@ -29,7 +40,7 @@ public class Person {
     private String email;
 
     /**
-     * Default Konstruktor auch notwendig!
+     * Der default Konstruktor ist wirklich notwendig!
      *
      * @author Chris A.
      */
