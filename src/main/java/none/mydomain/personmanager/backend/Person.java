@@ -12,17 +12,19 @@ import jakarta.persistence.*;
 //@Table(name = "person")
 public class Person {
 
-    // Die einfachere Art mit GenerationType --> IDENTITY.
+    /*
+    Die bessere-effizientere Art mit GenerationType --> SEQUENCE.
+    (Obwohl hier mit "allocationSize=1" kein wirklicher Vorteil)
+    (Mit größerem "allocationSize" und das gesammelte Einfügen von Datensätzen aber doch)
+    Mit "sequenceName" wird der Name der entspr. Hilfstabelle in der Datenbank gesetzt.
+     */
 //    @Id
-//    @GeneratedValue (strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence_generator")
+//    @SequenceGenerator(name="my_sequence_generator", sequenceName = "person_sequence", allocationSize=1)
 
-    // Die bessere-effizientere Art mit GenerationType --> SEQUENCE.
-    // (Obwohl hier mit "allocationSize=1" kein wirklicher Vorteil)
-    // (Mit größerem "allocationSize" und das gesammelte Einfügen von Datensätzen aber doch)
-    // Mit "sequenceName" wird der Name der entspr. Hilfstabelle in der Datenbank gesetzt.
+    // Die einfachere Art mit GenerationType --> IDENTITY.
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence_generator")
-    @SequenceGenerator(name="my_sequence_generator", sequenceName = "person_sequence", allocationSize=1)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
 
     // Ohne die @Column-Annotation wird einfach der Name der Eigenschaft benutzt.
