@@ -58,18 +58,6 @@ public class PersonHandler {
 
         var ta = new MyTransaction<Person>(this.factory);
 
-        // Die klassische Art.
-//        Function<Session, Person> function = new Function<>() {
-//            @Override
-//            public Person apply(Session session) {
-//                Person p = session.get(Person.class, personID);
-//                return p;
-//            }
-//        };
-//
-//        Person rv = ta.commit(function);
-
-        // Die moderne Art.
         Person rv = ta.commit(session -> {
             Person p = session.get(Person.class, personID);
             return p;

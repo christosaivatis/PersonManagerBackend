@@ -4,11 +4,8 @@
 
 <hibernate-configuration>
     <session-factory>
-        <!-- Mit "update" wird die Tabelle in der Datenbank automatisch generiert bzw. geupdated. -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-
         <property name="org.hibernate.dialect.MySQLDialect"/>
-
         <property name="hibernate.connection.url">jdbc:mysql://localhost/test</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"/>
