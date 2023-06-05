@@ -16,7 +16,7 @@ public class Person {
     Die bessere-effizientere Art mit GenerationType --> SEQUENCE.
     (Obwohl hier mit "allocationSize=1" kein wirklicher Vorteil)
     (Mit größerem "allocationSize" und das gesammelte Einfügen von Datensätzen aber doch)
-    Mit "sequenceName" wird der Name der entspr. Hilfstabelle in der Datenbank gesetzt.
+    (Mit dem "sequenceName" wird der Name der entsprechenden Hilfstabelle in der Datenbank gesetzt)
      */
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence_generator")

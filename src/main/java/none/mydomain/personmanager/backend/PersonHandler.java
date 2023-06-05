@@ -21,7 +21,8 @@ public class PersonHandler {
     public PersonHandler() {
 
         try {
-            this.factory = new Configuration().configure().addAnnotatedClass(Person.class).buildSessionFactory();
+            this.factory = new Configuration().configure().
+                    addAnnotatedClass(Person.class).buildSessionFactory();
         }
         catch (HibernateException e) {
             e.printStackTrace();
@@ -90,6 +91,25 @@ public class PersonHandler {
 
         return ta.commit(session -> {
             return session.createQuery("FROM Person", Person.class).list();
+        });
+    }
+
+    /**
+     * Sucht in der Datenbank nach allen Personen,
+     * die den Kriterien im HQL-String entsprechen,
+     * und gibt diese als eine Liste zurück.
+     * (HQL = "Hibernate Query Language")
+     *
+     * @param hql Das HQL-String mit den erwünschten Kriterien.
+     * @return Eine Liste mit allen Personen, die den Kriterien entsprechen.
+     * @author Chris A.
+     */
+    public List<Person> getSome(String hql) {
+
+        var ta = new MyTransaction<List<Person>>(this.factory);
+
+        return ta.commit(session -> {
+            return session.createQuery(hql, Person.class).list();
         });
     }
 }
