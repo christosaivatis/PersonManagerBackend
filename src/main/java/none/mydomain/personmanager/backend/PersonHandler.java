@@ -80,31 +80,17 @@ public class PersonHandler {
     }
 
     /**
-     * mit <code>createQuery()</code>
-     *
-     * @return
-     *
-     */
-    public List<Person> getAll() {
-
-        var ta = new MyTransaction<List<Person>>(this.factory);
-
-        return ta.commit(session -> {
-            return session.createQuery("FROM Person", Person.class).list();
-        });
-    }
-
-    /**
      * Sucht in der Datenbank nach allen Personen,
      * die den Kriterien im HQL-String entsprechen,
      * und gibt diese als eine Liste zurück.
+     * Bei hql = "FROM Person" werden alle Datensätze zurückgegeben.
      * (HQL = "Hibernate Query Language")
      *
      * @param hql Das HQL-String mit den erwünschten Kriterien.
      * @return Eine Liste mit allen Personen, die den Kriterien entsprechen.
      * @author Chris A.
      */
-    public List<Person> getSome(String hql) {
+    public List<Person> getDbRecords(String hql) {
 
         var ta = new MyTransaction<List<Person>>(this.factory);
 
