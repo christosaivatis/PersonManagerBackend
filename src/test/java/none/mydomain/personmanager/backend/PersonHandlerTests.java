@@ -14,7 +14,7 @@ public class PersonHandlerTests {
         Person testPerson1 = new Person("Herr", "Josua", "Erl", "31.12.1911",
                 "Kiebitzpohl", "194", "75245", "Neulingen",
                 "0156/2031182", "josua_11@company.none");
-        int id = personHandler.addPerson(testPerson1);
+        int id = personHandler.addDbRecord(testPerson1);
 
         System.out.println(id);
     }
@@ -25,16 +25,16 @@ public class PersonHandlerTests {
         Person testPerson2 = new Person("Frau", "Friederike", "Müller", "02.05.1912",
                 "Kiebitzpohl", "194", "75245", "Neulingen",
                 "0156/0123456789", "f.mueller@nonemail.none");
-        int id = personHandler.addPerson(testPerson2);
+        int id = personHandler.addDbRecord(testPerson2);
 
-        Person person = personHandler.getPerson(id);
+        Person person = personHandler.getDbRecord(id);
         System.out.println(person);
     }
 
     @Test
     public void getAllTest() {
 
-        List<Person> list = personHandler.getAll();
+        List<Person> list = personHandler.getDbRecords("FROM Person");
 
         for (Person p : list) {
             System.out.println(p);

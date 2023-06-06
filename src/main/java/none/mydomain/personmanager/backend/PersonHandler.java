@@ -36,7 +36,7 @@ public class PersonHandler {
      * @return
      *
      */
-    public Integer addPerson(Person person) {
+    public Integer addDbRecord(Person person) {
 
         var ta = new MyTransaction<Integer>(this.factory);
 
@@ -55,7 +55,7 @@ public class PersonHandler {
      * @return
      *
      */
-    public Person getPerson(int personID) {
+    public Person getDbRecord(int personID) {
 
         var ta = new MyTransaction<Person>(this.factory);
 
