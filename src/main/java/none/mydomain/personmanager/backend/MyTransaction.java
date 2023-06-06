@@ -11,7 +11,7 @@ import java.util.function.Function;
  *
  *
  * @param <T>
- *
+ * @author Chris A.
  */
 public class MyTransaction<T> {
 
@@ -21,7 +21,7 @@ public class MyTransaction<T> {
      * Der Konstruktor.
      *
      * @param factory
-     *
+     * @author Chris A.
      */
     public MyTransaction(SessionFactory factory) {
 
@@ -29,11 +29,11 @@ public class MyTransaction<T> {
     }
 
     /**
-     *
+     * Besonderer Dank an Macit Kandemir für diese ausgezeichnete Implementierung!
      *
      * @param function
      * @return
-     *
+     * @author
      */
     synchronized public T commit(Function<Session, T> function) {
 
