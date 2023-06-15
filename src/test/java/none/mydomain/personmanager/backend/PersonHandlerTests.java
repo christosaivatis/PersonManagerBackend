@@ -9,7 +9,7 @@ public class PersonHandlerTests {
     private final PersonHandler personHandler = new PersonHandler();
 
     @Test
-    public void addPersonTest() {
+    public void testAddPerson() {
 
         Person testPerson1 = new Person("Herr", "Josua", "Erl", "31.12.1911",
                 "Kiebitzpohl", "194", "75245", "Neulingen",
@@ -20,7 +20,7 @@ public class PersonHandlerTests {
     }
 
     @Test
-    public void getPersonTest() {
+    public void testGetPerson() {
 
         Person testPerson2 = new Person("Frau", "Friederike", "Müller", "02.05.1912",
                 "Kiebitzpohl", "194", "75245", "Neulingen",
@@ -32,7 +32,7 @@ public class PersonHandlerTests {
     }
 
     @Test
-    public void getAllTest() {
+    public void testGetAll() {
 
         List<Person> list = personHandler.getDbRecords("FROM Person");
 

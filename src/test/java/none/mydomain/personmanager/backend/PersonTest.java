@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class PersonTest {
 
     @Test
-    public void createPersonTest() {
+    public void testCreatePerson() {
 
         Person testPerson = new Person("Herr", "Josua", "Erl", "31.12.1911",
                 "Kiebitzpohl", "194", "75245", "Neulingen",
